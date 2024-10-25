@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.dropit"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.dropit"
@@ -66,4 +66,19 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // new Splash Screen API
+    implementation("androidx.core:core-splashscreen:1.2.0-alpha02")
+
+    // navigation animation library
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.36.0")
+
+    // System Ui Controller
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
+
+    //material icon extended library
+    implementation("androidx.compose.material:material-icons-extended:1.7.2")
+
+    //lottie Animations JSON support
+    implementation("com.airbnb.android:lottie-compose:6.5.2")
 }
