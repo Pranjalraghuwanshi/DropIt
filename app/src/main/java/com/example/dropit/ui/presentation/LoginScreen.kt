@@ -2,6 +2,7 @@ package com.example.dropit.ui.presentation
 
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,9 +33,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -68,37 +72,54 @@ fun LoginScreen(
     var password by rememberSaveable { mutableStateOf("") }
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
 
-
     Box(
         modifier = Modifier
-            .background(Color.White)
             .fillMaxSize()
-            .padding(standardPadding)
     ) {
-        Column(
+        // Blurred gradient background layer
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(top = 80.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+                .background(color = colorResource(id = R.color.background))
+                .blur(radius = 30.dp) // Only this background layer is blurred
+        )
+
+        // Glassmorphism effect box without blurring inner elements
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(16.dp))
+                .background(
+                    color = Color.White.copy(alpha = 0.15f), // Semi-transparent overlay for frosted effect
+                    shape = RoundedCornerShape(16.dp)
+                )
+                .padding(16.dp)
         ) {
-            LoginHeaderText()
-            LottieAnimationLoginPage()
-            email =
-                TextField(icon = Icons.Default.Email, plText = "Enter Your Email", prefixText = "")
-            password = Password(
-                icon = Icons.Default.Lock, plText = "sshhh... Keep it Secret!!!", prefixText = ""
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            ForgotPasswordText()
-            Spacer(modifier = Modifier.height(16.dp))
-            SignInButton(email, password,navController)
-            Spacer(modifier = Modifier.height(16.dp))
-            SignUpText(navController)
+            // Content layer with login components (no blur applied)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .padding(top = 80.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top
+            ) {
+                LoginHeaderText()
+                LottieAnimationLoginPage()
+                email = TextField(icon = Icons.Default.Email, plText = "Enter Your Email", prefixText = "")
+                password = Password(icon = Icons.Default.Lock, plText = "sshhh... Keep it Secret!!!", prefixText = "")
+                Spacer(modifier = Modifier.height(8.dp))
+                ForgotPasswordText()
+                Spacer(modifier = Modifier.height(16.dp))
+                SignInButton(email, password, navController)
+                Spacer(modifier = Modifier.height(16.dp))
+                SignUpText(navController)
+            }
         }
     }
 }
+
+
 
 @Composable
 fun LottieAnimationLoginPage() {
@@ -121,7 +142,7 @@ fun LoginHeaderText() {
     ) {
         Text(
             text = "Let's Sign you in",
-            color = MaterialTheme.colorScheme.onBackground,
+            color = Color.Black,
             fontSize = 35.sp,
             style = h1TextStyle,
             fontWeight = FontWeight.Bold,
@@ -130,14 +151,14 @@ fun LoginHeaderText() {
         Spacer(modifier = Modifier.height(18.dp))
         Text(
             text = "Welcome Back, ",
-            color = MaterialTheme.colorScheme.onBackground,
+            color = Color.Black,
             fontSize = 20.sp,
             style = h3TextStyle,
             modifier = Modifier.align(Alignment.Start)
         )
         Text(
             text = "You have been missed",
-            color = MaterialTheme.colorScheme.onBackground,
+            color = Color.Black,
             style = h3TextStyle,
             fontSize = 20.sp,
             modifier = Modifier
@@ -160,7 +181,7 @@ fun ForgotPasswordText() {
     ) {
 
         Text(text = "Forgot Password ?",
-            color = Color.DarkGray,
+            color = Color.Black,
             fontSize = 15.sp,
             modifier = Modifier.clickable {
             })
@@ -228,12 +249,12 @@ fun SendResetPasswordDialogBox(onDismiss: () -> Unit, onConfirm: (String) -> Uni
 
 @Composable
 fun SignInButton(
-    email: String, password: String,navController: NavController
+    email: String, password: String, navController: NavController
 ) {
     val context = LocalContext.current  // Use LocalContext.current directly
 
     Button(
-        onClick = {  },
+        onClick = { },
         modifier = Modifier
             .fillMaxWidth()
             .height(buttonHeight)
@@ -242,7 +263,7 @@ fun SignInButton(
     ) {
         Text(
             text = "Sign In",
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = Color.White,
             fontSize = smallTextSize,
             fontWeight = FontWeight.Bold
         )
@@ -262,7 +283,7 @@ fun SignUpText(navController: NavController) {
         Row {
 
             Text(
-                text = "Don't have an Account?", color = Color.DarkGray, fontSize = 15.sp
+                text = "Don't have an Account ?", color = Color.DarkGray, fontSize = 15.sp
             )
 
             Text(text = "Sign Up",

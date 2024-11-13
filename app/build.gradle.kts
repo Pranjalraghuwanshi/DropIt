@@ -59,6 +59,14 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.animation.graphics.android)
+    implementation(libs.androidx.ui.test.android)
+    implementation(libs.androidx.ui.test.android)
+    implementation(libs.androidx.ui.test.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -77,8 +85,12 @@ dependencies {
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
 
     //material icon extended library
-    implementation("androidx.compose.material:material-icons-extended:1.7.2")
+    implementation("androidx.compose.material:material-icons-extended:1.7.5")
 
     //lottie Animations JSON support
-    implementation("com.airbnb.android:lottie-compose:6.5.2")
+    implementation("com.airbnb.android:lottie-compose:6.6.0")
+
+    implementation ("com.google.accompanist:accompanist-pager:0.36.0")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:0.36.0")
+
 }
