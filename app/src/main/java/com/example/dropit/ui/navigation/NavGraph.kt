@@ -9,8 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.dropit.MainActivity
+import com.example.dropit.ui.presentation.AccountScreen
+import com.example.dropit.ui.presentation.BottomBarScreen
+import com.example.dropit.ui.presentation.HomeScreen
 import com.example.dropit.ui.presentation.LoginScreen
+import com.example.dropit.ui.presentation.NotificationScreen
 import com.example.dropit.ui.presentation.OnboardingScreen
+import com.example.dropit.ui.presentation.PostScreen
 import com.example.dropit.ui.presentation.SignUpScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 
@@ -36,6 +41,21 @@ fun NavGraph(context : MainActivity) {
         }
         composable(Route.SignUpScreen.name) {
             SignUpScreen(navController)
+        }
+        composable(Route.SignUpScreen.name) {
+            BottomBarScreen(navController)
+        }
+        composable(Route.HomeScreen.name) {
+            HomeScreen(navController)
+        }
+        composable(Route.PostScreen.name) {
+            PostScreen(navController)
+        }
+        composable(Route.NotificationScreen.name) {
+            NotificationScreen(navController)
+        }
+        composable(Route.AccountScreen.name) {
+            AccountScreen(navController)
         }
     }
 }
