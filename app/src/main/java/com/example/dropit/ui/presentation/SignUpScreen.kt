@@ -33,10 +33,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.dropit.R
 import com.example.dropit.ui.buttonHeight
 import com.example.dropit.ui.navigation.Route
@@ -44,9 +47,11 @@ import com.example.dropit.ui.presentation.common.Password
 import com.example.dropit.ui.presentation.common.TextField
 import com.example.dropit.ui.smallTextSize
 import com.example.dropit.ui.standardPadding
+import com.example.dropit.ui.theme.ColorOrange
 import com.example.dropit.ui.theme.h1TextStyle
 import com.example.dropit.ui.theme.h3TextStyle
 import com.example.dropit.ui.theme.infoTextStyle
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun SignUpScreen(navController: NavController) {
@@ -55,6 +60,9 @@ fun SignUpScreen(navController: NavController) {
     var password by remember { mutableStateOf("") }
     var passwordHidden by remember { mutableStateOf(true) }
 
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setStatusBarColor(color = Color.White, darkIcons = true)
+
     BackHandler { navController.navigate(Route.WelcomeScreen.name) }
 
 
@@ -62,21 +70,13 @@ fun SignUpScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        // Blurred gradient background layer
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = colorResource(id = R.color.background))
-                .blur(radius = 30.dp) // Only this background layer is blurred
-        )
 
-        // Glassmorphism effect box without blurring inner elements
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .clip(RoundedCornerShape(16.dp))
                 .background(
-                    color = Color.White.copy(alpha = 0.15f), // Semi-transparent overlay for frosted effect
+                    color = Color.White, // Semi-transparent overlay for frosted effect
                     shape = RoundedCornerShape(16.dp)
                 )
                 .padding(16.dp)
@@ -108,7 +108,7 @@ fun SignUpScreen(navController: NavController) {
 
                 // Sign Up Button
                 SignUpButton {
-
+                    navController.navigate(Route.OtpVerificationScreen.name)
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -129,7 +129,8 @@ fun SignUpHeader() {
             style = h1TextStyle,
             fontSize = 35.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Black
+            color = Color.Black,
+            fontFamily = FontFamily.Cursive
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
@@ -137,21 +138,26 @@ fun SignUpHeader() {
             style = h1TextStyle,
             fontSize = 35.sp,
             fontWeight = FontWeight.Bold,
-            color = Color.Black
+            color = Color.Black,
+            fontFamily = FontFamily.Cursive
         )
         Spacer(modifier = Modifier.height(18.dp))
         Text(
             text = "Hello Champ, hope you",
             style = h3TextStyle,
-            fontSize = 20.sp,
-            color = Color.Black
+            fontSize = 24.sp,
+            color = ColorOrange,
+            fontFamily = FontFamily.Cursive,
+            fontWeight = FontWeight.W900
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "have a grateful journey",
             style = h3TextStyle,
-            fontSize = 20.sp,
-            color = Color.Black
+            fontSize = 24.sp,
+            color = ColorOrange,
+            fontFamily = FontFamily.Cursive,
+            fontWeight = FontWeight.W900
         )
     }
 }
@@ -166,7 +172,7 @@ fun SignUpButton(onClick: () -> Unit) {
             .fillMaxWidth()
             .height(buttonHeight)
             .clip(RoundedCornerShape(12.dp)),
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
+        colors = ButtonDefaults.buttonColors(containerColor = ColorOrange)
     ) {
         Text(
             text = "Sign Up",
@@ -186,9 +192,10 @@ fun SignInNavigation(navController: NavController) {
     ) {
         Text(
             text = "Already have an Account ?",
-            fontSize = 15.sp,
+            fontSize = 22.sp,
             style = infoTextStyle,
-            color = Color.DarkGray
+            color = Color.DarkGray,
+            fontFamily = FontFamily.Cursive
         )
         Spacer(Modifier.width(8.dp))
         Text(
@@ -196,9 +203,16 @@ fun SignInNavigation(navController: NavController) {
             modifier = Modifier.clickable {
                 navController.navigate(Route.LoginScreen.name)
             },
-            fontSize = 16.sp,
+            fontSize = 22.sp,
+            fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.ExtraBold,
-            color = Color.Black
+            color = ColorOrange
         )
     }
+}
+
+@Preview
+@Composable
+fun SignUpScreenPreview() {
+    SignUpScreen(rememberNavController())
 }

@@ -39,12 +39,15 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
@@ -58,9 +61,11 @@ import com.example.dropit.ui.presentation.common.TextField
 import com.example.dropit.ui.roundedCornerSize
 import com.example.dropit.ui.smallTextSize
 import com.example.dropit.ui.standardPadding
+import com.example.dropit.ui.theme.ColorOrange
 import com.example.dropit.ui.theme.h1TextStyle
 import com.example.dropit.ui.theme.h2TextStyle
 import com.example.dropit.ui.theme.h3TextStyle
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
@@ -72,25 +77,19 @@ fun LoginScreen(
     var password by rememberSaveable { mutableStateOf("") }
     var passwordHidden by rememberSaveable { mutableStateOf(true) }
 
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setStatusBarColor(color = Color.White, darkIcons = true)
+
     Box(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        // Blurred gradient background layer
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = colorResource(id = R.color.background))
-                .blur(radius = 30.dp) // Only this background layer is blurred
-        )
-
-        // Glassmorphism effect box without blurring inner elements
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .clip(RoundedCornerShape(16.dp))
                 .background(
-                    color = Color.White.copy(alpha = 0.15f), // Semi-transparent overlay for frosted effect
+                    color = Color.White, // Semi-transparent overlay for frosted effect
                     shape = RoundedCornerShape(16.dp)
                 )
                 .padding(16.dp)
@@ -105,9 +104,16 @@ fun LoginScreen(
                 verticalArrangement = Arrangement.Top
             ) {
                 LoginHeaderText()
-                LottieAnimationLoginPage()
-                email = TextField(icon = Icons.Default.Email, plText = "Enter Your Email", prefixText = "")
-                password = Password(icon = Icons.Default.Lock, plText = "sshhh... Keep it Secret!!!", prefixText = "")
+                email = TextField(
+                    icon = Icons.Default.Email,
+                    plText = "Enter Your Email",
+                    prefixText = ""
+                )
+                password = Password(
+                    icon = Icons.Default.Lock,
+                    plText = "sshhh... Keep it Secret!!!",
+                    prefixText = ""
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 ForgotPasswordText()
                 Spacer(modifier = Modifier.height(16.dp))
@@ -117,21 +123,6 @@ fun LoginScreen(
             }
         }
     }
-}
-
-
-
-@Composable
-fun LottieAnimationLoginPage() {
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.drop))
-    val progress by animateLottieCompositionAsState(
-        composition = composition, restartOnPlay = true, iterations = LottieConstants.IterateForever
-    )
-
-    LottieAnimation(modifier = Modifier.size(300.dp),
-        composition = composition,
-        progress = { progress })
-
 }
 
 // Header composable for the title text
@@ -145,22 +136,27 @@ fun LoginHeaderText() {
             color = Color.Black,
             fontSize = 35.sp,
             style = h1TextStyle,
+            fontFamily = FontFamily.Cursive,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Start)
         )
         Spacer(modifier = Modifier.height(18.dp))
         Text(
             text = "Welcome Back, ",
-            color = Color.Black,
-            fontSize = 20.sp,
+            color = ColorOrange,
+            fontSize = 24.sp,
             style = h3TextStyle,
+            fontWeight = FontWeight.W900,
+            fontFamily = FontFamily.Cursive,
             modifier = Modifier.align(Alignment.Start)
         )
         Text(
             text = "You have been missed",
-            color = Color.Black,
+            fontFamily = FontFamily.Cursive,
+            color = ColorOrange,
             style = h3TextStyle,
-            fontSize = 20.sp,
+            fontWeight = FontWeight.W900,
+            fontSize = 24.sp,
             modifier = Modifier
                 .padding(top = 4.dp)
                 .align(Alignment.Start)
@@ -182,7 +178,8 @@ fun ForgotPasswordText() {
 
         Text(text = "Forgot Password ?",
             color = Color.Black,
-            fontSize = 15.sp,
+            fontSize = 18.sp,
+            fontFamily = FontFamily.Cursive,
             modifier = Modifier.clickable {
             })
     }
@@ -254,12 +251,14 @@ fun SignInButton(
     val context = LocalContext.current  // Use LocalContext.current directly
 
     Button(
-        onClick = { },
+        onClick = {
+            navController.navigate(Route.HomeScreen.name)
+        },
         modifier = Modifier
             .fillMaxWidth()
             .height(buttonHeight)
             .clip(RoundedCornerShape(roundedCornerSize)),
-        colors = ButtonDefaults.buttonColors(Color.Black)
+        colors = ButtonDefaults.buttonColors(ColorOrange)
     ) {
         Text(
             text = "Sign In",
@@ -283,13 +282,17 @@ fun SignUpText(navController: NavController) {
         Row {
 
             Text(
-                text = "Don't have an Account ?", color = Color.DarkGray, fontSize = 15.sp
+                text = "Don't have an Account ?",
+                color = Color.DarkGray,
+                fontSize = 22.sp,
+                fontFamily = FontFamily.Cursive
             )
 
             Text(text = "Sign Up",
-                color = Color.Black,
-                fontSize = 16.sp,
+                color = ColorOrange,
+                fontSize = 22.sp,
                 fontWeight = FontWeight.ExtraBold,
+                fontFamily = FontFamily.Cursive,
                 modifier = Modifier
                     .padding(start = 5.dp)
                     .clickable {
@@ -297,4 +300,10 @@ fun SignUpText(navController: NavController) {
                     })
         }
     }
+}
+
+@Preview
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(rememberNavController())
 }

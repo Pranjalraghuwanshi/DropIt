@@ -21,10 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dropit.ui.theme.ColorOrange
 
 @Composable
 fun TextField(icon: ImageVector, plText: String, prefixText: String): String {
@@ -39,7 +41,7 @@ fun TextField(icon: ImageVector, plText: String, prefixText: String): String {
         leadingIcon = {
             Icon(
                 icon, contentDescription = "icon",
-                tint = Color.DarkGray
+                tint = ColorOrange
             )
         },
         onValueChange = { text = it },
@@ -56,7 +58,8 @@ fun TextField(icon: ImageVector, plText: String, prefixText: String): String {
         placeholder = {
             Text(
                 text = plText, color = Color.DarkGray,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                fontFamily = FontFamily.Cursive
             )
         },
 
@@ -69,7 +72,7 @@ fun TextField(icon: ImageVector, plText: String, prefixText: String): String {
             unfocusedTextColor = Color.Black,
             focusedContainerColor = Color.White,
             unfocusedContainerColor = Color.White,
-            focusedBorderColor = Color.Black,
+            focusedBorderColor = ColorOrange,
             unfocusedBorderColor = Color.DarkGray,
             cursorColor = Color.Black
         ),

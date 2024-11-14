@@ -26,12 +26,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dropit.ui.theme.ColorOrange
 
 
 @Composable
@@ -47,7 +49,7 @@ fun Password(icon: ImageVector , plText: String , prefixText : String): String {
         leadingIcon = {
             Icon(
                 icon, contentDescription = "icon",
-                tint = Color.DarkGray)
+                tint = ColorOrange)
         },
         onValueChange = { text = it },
         shape = RoundedCornerShape(10.dp) ,
@@ -60,7 +62,7 @@ fun Password(icon: ImageVector , plText: String , prefixText : String): String {
         },
 
 
-        placeholder = { Text(text = plText, color = Color.DarkGray,fontSize = 14.sp) },
+        placeholder = { Text(text = plText, color = Color.DarkGray,fontSize = 14.sp, fontFamily = FontFamily.Cursive) },
 
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Next,
@@ -71,10 +73,10 @@ fun Password(icon: ImageVector , plText: String , prefixText : String): String {
             unfocusedTextColor = Color.Black ,
             focusedContainerColor = Color.White ,
             unfocusedContainerColor = Color.White ,
-            focusedBorderColor =Color.Black ,
+            focusedBorderColor = ColorOrange ,
             unfocusedBorderColor = Color.DarkGray ,
             cursorColor = Color.Black
-        ) ,
+        ),
         singleLine = true,
         modifier = Modifier
             .fillMaxWidth()
@@ -96,7 +98,7 @@ fun Password(icon: ImageVector , plText: String , prefixText : String): String {
             Icon(
                 imageVector = visibilityIcon,
                 contentDescription = if (isPasswordVisible) "Hide password" else "Show password",
-                tint = Color(0xFFA7A7A7),
+                tint = ColorOrange,
                 modifier = Modifier
                     .size(30.dp)
                     .clickable { isPasswordVisible = !isPasswordVisible }
