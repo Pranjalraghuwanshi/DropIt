@@ -7,7 +7,7 @@ enum class Route(val route: String) {
     HomeScreen("homeScreen"),
     ProductDetailScreen("productDetailScreen"),
     PostScreen("postScreen"),
-    ProfileScreen("profileScreen"),
+    AccountScreen("accountScreen"),
     NotificationScreen("notificationScreen"),
     BottomNav("bottomNav"),
     SingleChatScreen("singleChatScreen"),
@@ -19,7 +19,8 @@ enum class Route(val route: String) {
     HelpScreen("helpScreen"),
     PolicyScreen("policyScreen"),
     FeedbackScreen("feedbackScreen"),
-    FavouriteScreen("favouriteScreen"),
+    FavouritesScreen("favouritesScreen"),
     SplashScreen("splashScreen"),
+    OtpVerificationScreen("OtpVerificationScreen"),
     OnboardingScreen("onboardingScreen");
 }

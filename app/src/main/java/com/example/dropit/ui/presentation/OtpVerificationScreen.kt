@@ -28,7 +28,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.dropit.ui.navigation.Route
 import com.example.dropit.ui.theme.ColorOrange
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun OtpVerificationScreen(navController: NavController) {
     var code by remember { mutableStateOf(List(4) { "" }) }

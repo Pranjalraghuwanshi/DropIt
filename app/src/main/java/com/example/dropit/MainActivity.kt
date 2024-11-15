@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
 
         // Add a coroutine to delay the splash screen
         kotlinx.coroutines.GlobalScope.launch {
-            delay(5000) // 4-second delay
+            delay(4000) // 4-second delay
         }
 
         enableEdgeToEdge()
@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
             SideEffect {
                 systemController.setStatusBarColor(
-                    color = Color.White,
+                    color = Color.Transparent,
                     darkIcons = true
                 )
             }

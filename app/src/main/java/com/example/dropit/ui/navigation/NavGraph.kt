@@ -6,15 +6,18 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.dropit.MainActivity
 import com.example.dropit.ui.presentation.AccountScreen
-import com.example.dropit.ui.presentation.BottomBarScreen
+import com.example.dropit.ui.presentation.BottomBar
+import com.example.dropit.ui.presentation.FavouritesScreen
 import com.example.dropit.ui.presentation.HomeScreen
 import com.example.dropit.ui.presentation.LoginScreen
 import com.example.dropit.ui.presentation.NotificationScreen
 import com.example.dropit.ui.presentation.OnboardingScreen
+import com.example.dropit.ui.presentation.OtpVerificationScreen
 import com.example.dropit.ui.presentation.PostScreen
 import com.example.dropit.ui.presentation.SignUpScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -42,8 +45,8 @@ fun NavGraph(context : MainActivity) {
         composable(Route.SignUpScreen.name) {
             SignUpScreen(navController)
         }
-        composable(Route.SignUpScreen.name) {
-            BottomBarScreen(navController)
+        composable(Route.BottomNav.name) {
+            BottomBar(navController,Modifier)
         }
         composable(Route.HomeScreen.name) {
             HomeScreen(navController)
@@ -56,6 +59,12 @@ fun NavGraph(context : MainActivity) {
         }
         composable(Route.AccountScreen.name) {
             AccountScreen(navController)
+        }
+        composable(Route.OtpVerificationScreen.name) {
+            OtpVerificationScreen(navController)
+        }
+        composable(Route.FavouritesScreen.name) {
+            FavouritesScreen(navController)
         }
     }
 }
