@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -53,6 +55,7 @@ import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -89,6 +92,15 @@ fun HomeScreen(navController: NavController) {
                 .background(Color.White)
                 .padding(paddingValues)
         ) {
+            Spacer(Modifier.height(16.dp))
+            Text(
+                text = "Explore all Deliveries ",
+                modifier = Modifier
+                    .padding(start = 20.dp),
+                fontSize = 22.sp,
+                color = Color.Black
+            )
+            Spacer(Modifier.height(16.dp))
             SwipeCardExample(
                 modifier = Modifier
                     .align(Alignment.TopCenter)
@@ -200,30 +212,59 @@ fun SwipeCardExample(modifier: Modifier) {
                 ) {
                     Box(
                         contentAlignment = Alignment.Center,
-                        modifier = Modifier.wrapContentSize()
+                        modifier = Modifier.height(600.dp)
+                            .wrapContentWidth()
                     ) {
                         Image(
                             painter = painterResource(images[imageIndex].image),
                             contentDescription = null,
                             modifier = Modifier
-                                .align(Alignment.Center)
                                 .fillMaxSize()
                         )
-                        Row(
+                        Column(
                             modifier = Modifier
-                                .align(Alignment.BottomCenter)
+                                .align(Alignment.BottomStart)
                                 .padding(16.dp)
                         ) {
-                            val (favIcon, closeIcon) = iconStates[cardData.id] ?: (false to false)
-                            GradientCircleWithIcon(
-                                icon = Icons.Default.FavoriteBorder,
-                                selectedIcon = favIcon
+                            Text(
+                                text = "Shoes",
+                                fontSize = 18.sp,
+                                color = Color.Black,
+                                fontWeight = FontWeight.W900
                             )
-                            Spacer(modifier = Modifier.width(16.dp))
-                            GradientCircleWithIcon(
-                                icon = Icons.Default.Close,
-                                selectedIcon = closeIcon
+                            Text(
+                                text = "₹ 28",
+                                fontSize = 14.sp,
+                                color = Color.Black,
+                                fontWeight = FontWeight.W900
                             )
+                            Text(
+                                text = "123 Elm Street Springfield, IL 62701 United States",
+                                fontSize = 14.sp,
+                                color = Color.Black,
+                                fontWeight = FontWeight.W900
+                            )
+                            Text(
+                                text = "456 Maple Avenue Richmond, VA 23220 United States",
+                                fontSize = 14.sp,
+                                color = Color.Black,
+                                fontWeight = FontWeight.W900
+                            )
+                            Row(
+                                modifier = Modifier
+                                    .padding(16.dp)
+                            ) {
+                                val (favIcon, closeIcon) = iconStates[cardData.id] ?: (false to false)
+                                GradientCircleWithIcon(
+                                    icon = Icons.Default.Close,
+                                    selectedIcon = closeIcon
+                                )
+                                Spacer(modifier = Modifier.width(16.dp))
+                                GradientCircleWithIcon(
+                                    icon = Icons.Default.FavoriteBorder,
+                                    selectedIcon = favIcon
+                                )
+                            }
                         }
                     }
                 }
