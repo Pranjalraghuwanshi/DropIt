@@ -5,6 +5,7 @@ enum class Route(val route: String) {
     LoginScreen("loginScreen"),
     SignUpScreen("signUpScreen"),
     HomeScreen("homeScreen"),
+    ChangePasswordScreen("changePasswordScreen"),
     ProductDetailScreen("productDetailScreen"),
     PostScreen("postScreen"),
     AccountScreen("accountScreen"),
@@ -21,6 +22,7 @@ enum class Route(val route: String) {
     FeedbackScreen("feedbackScreen"),
     FavouritesScreen("favouritesScreen"),
     SplashScreen("splashScreen"),
+    TermsAndConditions("termsAndConditionScreen"),
     OtpVerificationScreen("OtpVerificationScreen"),
     OnboardingScreen("onboardingScreen");
 }

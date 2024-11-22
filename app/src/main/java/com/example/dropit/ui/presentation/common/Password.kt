@@ -62,7 +62,7 @@ fun Password(icon: ImageVector , plText: String , prefixText : String): String {
         },
 
 
-        placeholder = { Text(text = plText, color = Color.DarkGray,fontSize = 14.sp, fontFamily = FontFamily.Cursive) },
+        placeholder = { Text(text = plText, color = Color.DarkGray,fontSize = 14.sp, fontFamily = FontFamily.SansSerif) },
 
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Next,

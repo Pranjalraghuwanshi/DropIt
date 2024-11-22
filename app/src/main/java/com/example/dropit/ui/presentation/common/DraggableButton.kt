@@ -114,7 +114,7 @@ fun ConfirmationButton(
                 text = "Swipe It.",
                 color = Color.White,
                 fontSize = 18.sp,
-                fontFamily = FontFamily.Cursive
+                fontFamily = FontFamily.SansSerif
             )
         }
 

@@ -136,7 +136,7 @@ fun LoginHeaderText() {
             color = Color.Black,
             fontSize = 35.sp,
             style = h1TextStyle,
-            fontFamily = FontFamily.Cursive,
+            fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Start)
         )
@@ -147,12 +147,12 @@ fun LoginHeaderText() {
             fontSize = 24.sp,
             style = h3TextStyle,
             fontWeight = FontWeight.W900,
-            fontFamily = FontFamily.Cursive,
+            fontFamily = FontFamily.SansSerif,
             modifier = Modifier.align(Alignment.Start)
         )
         Text(
             text = "You have been missed",
-            fontFamily = FontFamily.Cursive,
+            fontFamily = FontFamily.SansSerif,
             color = ColorOrange,
             style = h3TextStyle,
             fontWeight = FontWeight.W900,
@@ -179,7 +179,7 @@ fun ForgotPasswordText() {
         Text(text = "Forgot Password ?",
             color = Color.Black,
             fontSize = 18.sp,
-            fontFamily = FontFamily.Cursive,
+            fontFamily = FontFamily.SansSerif,
             modifier = Modifier.clickable {
             })
     }
@@ -285,14 +285,14 @@ fun SignUpText(navController: NavController) {
                 text = "Don't have an Account ?",
                 color = Color.DarkGray,
                 fontSize = 22.sp,
-                fontFamily = FontFamily.Cursive
+                fontFamily = FontFamily.SansSerif
             )
 
             Text(text = "Sign Up",
                 color = ColorOrange,
                 fontSize = 22.sp,
                 fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily.Cursive,
+                fontFamily = FontFamily.SansSerif,
                 modifier = Modifier
                     .padding(start = 5.dp)
                     .clickable {

@@ -12,14 +12,19 @@ import androidx.navigation.compose.rememberNavController
 import com.example.dropit.MainActivity
 import com.example.dropit.ui.presentation.AccountScreen
 import com.example.dropit.ui.presentation.BottomBar
+import com.example.dropit.ui.presentation.ChangePasswordScreen
 import com.example.dropit.ui.presentation.FavouritesScreen
+import com.example.dropit.ui.presentation.HelpScreen
 import com.example.dropit.ui.presentation.HomeScreen
 import com.example.dropit.ui.presentation.LoginScreen
 import com.example.dropit.ui.presentation.NotificationScreen
 import com.example.dropit.ui.presentation.OnboardingScreen
 import com.example.dropit.ui.presentation.OtpVerificationScreen
+import com.example.dropit.ui.presentation.PolicyScreen
 import com.example.dropit.ui.presentation.PostScreen
+import com.example.dropit.ui.presentation.ProfileDetailsScreen
 import com.example.dropit.ui.presentation.SignUpScreen
+import com.example.dropit.ui.presentation.TermsAndConditionsScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -65,6 +70,21 @@ fun NavGraph(context : MainActivity) {
         }
         composable(Route.FavouritesScreen.name) {
             FavouritesScreen(navController)
+        }
+        composable(Route.PolicyScreen.name) {
+            PolicyScreen(navController)
+        }
+        composable(Route.TermsAndConditions.name) {
+            TermsAndConditionsScreen(navController)
+        }
+        composable(Route.ChangePasswordScreen.name) {
+            ChangePasswordScreen(navController)
+        }
+        composable(Route.ProfileDetailScreen.name) {
+            ProfileDetailsScreen(navController)
+        }
+        composable(Route.HelpScreen.name) {
+            HelpScreen(navController)
         }
     }
 }

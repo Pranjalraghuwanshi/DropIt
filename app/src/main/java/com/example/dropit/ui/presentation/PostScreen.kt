@@ -62,6 +62,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.dropit.R
+import com.example.dropit.ui.navigation.Route
 import com.example.dropit.ui.theme.ColorOrange
 import java.util.Calendar
 
@@ -117,7 +118,9 @@ fun PostScreen(navController: NavController) {
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = { /* Handle back action */ },
+                        onClick = {
+                            navController.navigate(Route.HomeScreen.name)
+                        },
                         modifier = Modifier
                             .clip(RoundedCornerShape(28.dp))
                             .background(ColorOrange)

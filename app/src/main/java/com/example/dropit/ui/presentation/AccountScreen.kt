@@ -10,25 +10,19 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Photo
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -37,13 +31,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.dropit.R
+import com.example.dropit.ui.navigation.Route
 import com.example.dropit.ui.presentation.common.CommonTopBar
 import com.example.dropit.ui.theme.ColorOrange
+import com.example.dropit.ui.theme.h3TextStyle
 
 @Composable
 fun AccountScreen(navController: NavController) {
@@ -68,12 +66,22 @@ fun AccountScreen(navController: NavController) {
         ) {
             val menuItems = remember {
                 listOf(
-                    MenuItem("Edit Profile") {},
-                    MenuItem("My Address") {},
+                    MenuItem("Edit Profile") {
+                        navController.navigate(Route.ProfileDetailScreen.name)
+                    },
                     MenuItem("My Order") {},
-                    MenuItem("Change Password") {},
-                    MenuItem("Privacy Policy") {},
-                    MenuItem("Terms & Conditions") {}
+                    MenuItem("Change Password") {
+                        navController.navigate(Route.ChangePasswordScreen.name)
+                    },
+                    MenuItem("Help Screen") {
+                        navController.navigate(Route.HelpScreen.name)
+                    },
+                    MenuItem("Privacy Policy") {
+                        navController.navigate(Route.PolicyScreen.name)
+                    },
+                    MenuItem("Terms & Conditions") {
+                        navController.navigate(Route.TermsAndConditions.name)
+                    }
                 )
             }
 
@@ -126,6 +134,7 @@ private fun ProfileHeader() {
             Surface(
                 modifier = Modifier
                     .size(24.dp)
+                    .background(Color.White)
                     .align(Alignment.BottomEnd),
                 shape = CircleShape
             ) {
@@ -141,13 +150,17 @@ private fun ProfileHeader() {
 
         Text(
             text = "Johnson Smith",
-            style = MaterialTheme.typography.titleLarge
+            style = h3TextStyle,
+            fontSize = 24.sp,
+            color = Color.Black,
+            fontFamily = FontFamily.SansSerif,
         )
 
         Text(
             text = "johnson@gmail.com",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            fontSize = 16.sp,
+            color = Color.LightGray,
+            fontFamily = FontFamily.SansSerif
         )
     }
 }
@@ -166,12 +179,14 @@ private fun MenuListItem(item: MenuItem) {
         ) {
             Text(
                 text = item.title,
-                style = MaterialTheme.typography.bodyLarge
+                fontSize = 18.sp,
+                color = Color.Black,
+                fontFamily = FontFamily.SansSerif,
             )
             Icon(
                 Icons.Default.ArrowForwardIos,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = Color.Black
             )
         }
     }
@@ -188,7 +203,10 @@ private fun LogoutButton(onClick: () -> Unit) {
     ) {
         Text(
             text = "Logout",
-            modifier = Modifier.padding(vertical = 8.dp)
+            modifier = Modifier.padding(vertical = 8.dp),
+            fontSize = 18.sp,
+            color = Color.White,
+            fontFamily = FontFamily.SansSerif
         )
     }
 }

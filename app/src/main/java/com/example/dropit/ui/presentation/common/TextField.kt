@@ -59,7 +59,7 @@ fun TextField(icon: ImageVector, plText: String, prefixText: String): String {
             Text(
                 text = plText, color = Color.DarkGray,
                 fontSize = 14.sp,
-                fontFamily = FontFamily.Cursive
+                fontFamily = FontFamily.SansSerif
             )
         },
 

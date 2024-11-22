@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,11 +27,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,13 +37,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.dropit.R
 import com.example.dropit.ui.buttonHeight
 import com.example.dropit.ui.navigation.Route
 import com.example.dropit.ui.presentation.common.Password
 import com.example.dropit.ui.presentation.common.TextField
 import com.example.dropit.ui.smallTextSize
-import com.example.dropit.ui.standardPadding
 import com.example.dropit.ui.theme.ColorOrange
 import com.example.dropit.ui.theme.h1TextStyle
 import com.example.dropit.ui.theme.h3TextStyle
@@ -130,7 +125,7 @@ fun SignUpHeader() {
             fontSize = 35.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black,
-            fontFamily = FontFamily.Cursive
+            fontFamily = FontFamily.SansSerif
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
@@ -139,7 +134,7 @@ fun SignUpHeader() {
             fontSize = 35.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black,
-            fontFamily = FontFamily.Cursive
+            fontFamily = FontFamily.SansSerif
         )
         Spacer(modifier = Modifier.height(18.dp))
         Text(
@@ -147,7 +142,7 @@ fun SignUpHeader() {
             style = h3TextStyle,
             fontSize = 24.sp,
             color = ColorOrange,
-            fontFamily = FontFamily.Cursive,
+            fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.W900
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -156,7 +151,7 @@ fun SignUpHeader() {
             style = h3TextStyle,
             fontSize = 24.sp,
             color = ColorOrange,
-            fontFamily = FontFamily.Cursive,
+            fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.W900
         )
     }
@@ -192,10 +187,10 @@ fun SignInNavigation(navController: NavController) {
     ) {
         Text(
             text = "Already have an Account ?",
-            fontSize = 22.sp,
+            fontSize = 18.sp,
             style = infoTextStyle,
             color = Color.DarkGray,
-            fontFamily = FontFamily.Cursive
+            fontFamily = FontFamily.SansSerif
         )
         Spacer(Modifier.width(8.dp))
         Text(
@@ -203,8 +198,8 @@ fun SignInNavigation(navController: NavController) {
             modifier = Modifier.clickable {
                 navController.navigate(Route.LoginScreen.name)
             },
-            fontSize = 22.sp,
-            fontFamily = FontFamily.Cursive,
+            fontSize = 18.sp,
+            fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.ExtraBold,
             color = ColorOrange
         )

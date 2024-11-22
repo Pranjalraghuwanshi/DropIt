@@ -154,7 +154,7 @@ fun OnBoardingPager(
                             .fillMaxWidth()
                             .padding(top = 20.dp, end = 30.dp),
                         color = item[pagerState.currentPage].mainColor,
-                        fontFamily = FontFamily.Cursive,
+                        fontFamily = FontFamily.SansSerif,
                         textAlign = TextAlign.Right,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.ExtraBold
@@ -164,7 +164,7 @@ fun OnBoardingPager(
                         text = item[pagerState.currentPage].desc,
                         modifier = Modifier.padding(top = 20.dp, start = 40.dp, end = 20.dp),
                         color = Color.Gray,
-                        fontFamily = FontFamily.Cursive,
+                        fontFamily = FontFamily.SansSerif,
                         fontSize = 17.sp,
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.ExtraLight
