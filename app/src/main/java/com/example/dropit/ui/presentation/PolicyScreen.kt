@@ -200,8 +200,8 @@ fun PolicyScreenParagraphText(text: String) {
 @Composable
 fun PolicyScreenBulletPointText(text: String) {
     Row(modifier = Modifier.padding(vertical = 2.dp)) {
-        Text(text = "• ", fontSize = 14.sp, color = Color.Black) // Black bullet point
-        Text(text = text, fontSize = 14.sp, color = Color.Black) // Gray text for bullet point content
+        Text(text = "• ", fontSize = 14.sp, color = Color.DarkGray) // Black bullet point
+        Text(text = text, fontSize = 14.sp, color = Color.DarkGray) // Gray text for bullet point content
     }
 }
 

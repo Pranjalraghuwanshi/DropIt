@@ -139,8 +139,8 @@ fun ParagraphText(text: String) {
 @Composable
 fun BulletPointText(text: String) {
     Row(modifier = Modifier.padding(vertical = 2.dp)) {
-        Text(text = "• ", fontSize = 14.sp, color = Color.Black)
-        Text(text = text, fontSize = 14.sp, color = Color.Black)
+        Text(text = "• ", fontSize = 14.sp, color = Color.DarkGray)
+        Text(text = text, fontSize = 14.sp, color = Color.DarkGray)
     }
 }
 

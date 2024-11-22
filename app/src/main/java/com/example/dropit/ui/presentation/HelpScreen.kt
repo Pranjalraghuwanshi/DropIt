@@ -99,6 +99,7 @@ fun FAQItem(question: String, answer: String) {
                 Text(
                     text = question,
                     fontSize = 18.sp,
+                    color = Color.Black,
                     modifier = Modifier.weight(1f)
                 )
                 IconButton(onClick = { isExpanded = !isExpanded }) {
@@ -111,6 +112,7 @@ fun FAQItem(question: String, answer: String) {
             AnimatedVisibility(visible = isExpanded) {
                 Text(
                     text = answer,
+                    color = Color.DarkGray,
                     fontSize = 14.sp,
                     modifier = Modifier.padding(top = 8.dp)
                 )
