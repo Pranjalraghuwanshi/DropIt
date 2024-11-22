@@ -284,13 +284,13 @@ fun SignUpText(navController: NavController) {
             Text(
                 text = "Don't have an Account ?",
                 color = Color.DarkGray,
-                fontSize = 22.sp,
+                fontSize = 18.sp,
                 fontFamily = FontFamily.SansSerif
             )
 
             Text(text = "Sign Up",
                 color = ColorOrange,
-                fontSize = 22.sp,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.ExtraBold,
                 fontFamily = FontFamily.SansSerif,
                 modifier = Modifier

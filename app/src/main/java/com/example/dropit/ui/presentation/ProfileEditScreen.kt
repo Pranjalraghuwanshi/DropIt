@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.dropit.R
 import com.example.dropit.ui.presentation.common.CommonImage
+import com.example.dropit.ui.theme.ColorOrange
 
 @Composable
 fun ProfileDetailsScreen(navController: NavController) {
@@ -72,16 +73,16 @@ fun ProfileContent(
                     Icon(
                         Icons.Default.ArrowBackIosNew,
                         contentDescription = "Back",
-                        tint = Color.Black
+                        tint = ColorOrange
                     )
                 }
             },
             actions = {
                 IconButton(onClick = onSave) {
-                    Icon(Icons.Default.SaveAs, contentDescription = "Save", tint = Color.Black)
+                    Icon(Icons.Default.SaveAs, contentDescription = "Save", tint = ColorOrange)
                 }
                 IconButton(onClick = onLogout) {
-                    Icon(Icons.Default.Logout, contentDescription = "Logout", tint = Color.Black)
+                    Icon(Icons.Default.Logout, contentDescription = "Logout", tint = ColorOrange)
                 }
             },
             colors = TopAppBarDefaults.topAppBarColors(containerColor = colorResource(R.color.white))
@@ -116,7 +117,7 @@ fun AppBarTitle() {
         Spacer(modifier = Modifier.weight(1f))
         Text(
             text = "My Profile",
-            color = Color.Black,
+            color = ColorOrange,
             style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold)
         )
         Spacer(modifier = Modifier.weight(1f))
